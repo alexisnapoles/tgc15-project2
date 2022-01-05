@@ -1,17 +1,20 @@
-# TGC-PROJECT2-DIGITAL LIBRARY
+# TGC-PROJECT2-DIGITAL LIBRARY (Catalogue)
 ## ABOUT THE PROJECT 
-- > Project Name: &Lib
-- > Project Summary:
-- This project will be a digital library of books and music. 
-- This project will accommodate all ages and all sexualities who are interested in reading fictional and non-fictional books and music genres of lo-fi, and Mod Boosters.
-- The project features will be as follows:
-- MAIN: {
--   > List of books sorted by fiction and non-fiction (author, title, short description/brief summary);
--   > List of music sorted by genre: lo-fi and mood boosters (singer, song title, genre);
--   > Search engine
--   > List of  few famous authors and music
--   }
+###### Project Name: Cat Library
+###### Project Summary:
+       - This project will be a cataloguing digital library web application of books and music.
+###### Project Features:
+       - Admin: can add, delete, update, and has approves or denies suggestions made by users;
+       - Users: can browse through list of catalogue of preference and suggest books and music;
+       - Searching: **Books** {by author, by title, by year of publication}; **Music** {by Artist, by title, by genre};
+       - Optional Info: link to book/music website {store, stream}
 
-- Project Goal: To develop a web application, specifically a Digital Library using Vue, MongoDB and Express
-- Digital library allows easy access to resources available without the hassle of going out to bookstores and libraries especially these times of pandemic.
+###### Project Goal: 
+       - To develop a web application, specifically a Digital Catalogue Library using Vue, MongoDB and Express
+###### Project Objective:
+       - To allow easy searchablity on the list of books or music that the user is interested with.
+###### Site Map
+![SiteMap](https://user-images.githubusercontent.com/87763047/148215799-7bbaef90-6974-4457-80c0-44e0ee973bdb.PNG)
 
+#### WIP:
+- [ ] sample database for the project via Mongodb
