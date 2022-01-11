@@ -1,0 +1,23 @@
+{
+  "dependencies": {
+    "express": "^4.17.2"
+  },
+  "name": "tgc-project2-digital-library",
+  "description": "- This project will be a cataloguing digital library web application of books and music. ###### Project Features:        - Admin: can add, delete, update, and has approves or denies suggestions made by users;        - Users: can browse through list of catalogue of preference and suggest books and music;        - Searching: **Books** {by author, by title, by year of publication}; **Music** {by Artist, by title, by genre};        - Optional Info: link to book/music website {store, stream}",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alexisnapoles/TGC-PROJECT2-DIGITAL-LIBRARY.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alexisnapoles/TGC-PROJECT2-DIGITAL-LIBRARY/issues"
+  },
+  "homepage": "https://github.com/alexisnapoles/TGC-PROJECT2-DIGITAL-LIBRARY#readme"
+}
