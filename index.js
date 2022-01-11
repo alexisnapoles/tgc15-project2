@@ -49,12 +49,12 @@ app.get('/books', (req, res) => {
 app.post('/suggestions', (req, res) => {
     console.log(req.body);
     // res.send('suggestion received')
-    let { name, email, title, category } = req.body;
+    let { name, email, title, categoryOptions } = req.body;
     res.render('display_suggestion', {
         name,
         email,
         title,
-        category
+        categoryOptions
     });
 })
 
