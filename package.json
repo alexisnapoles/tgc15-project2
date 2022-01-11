@@ -1,6 +1,7 @@
 {
   "dependencies": {
-    "express": "^4.17.2"
+    "express": "^4.17.2",
+    "hbs": "^4.2.0"
   },
   "name": "tgc-project2-digital-library",
   "description": "- This project will be a cataloguing digital library web application of books and music. ###### Project Features:        - Admin: can add, delete, update, and has approves or denies suggestions made by users;        - Users: can browse through list of catalogue of preference and suggest books and music;        - Searching: **Books** {by author, by title, by year of publication}; **Music** {by Artist, by title, by genre};        - Optional Info: link to book/music website {store, stream}",

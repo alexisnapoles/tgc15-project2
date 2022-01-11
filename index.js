@@ -1,14 +1,23 @@
 const express = require ('express');
+const hbs = require('hbs')
 const app = express();
+
+app.set('view engine', 'hbs');
 
 // ROUTES
 /* GET */
 app.get('/', (req, res) => {
-    res.send('Base Route!')
+    let luckyNumber = Math.floor(Math.random()*100 + 1);
+
+    res.render('index', {
+        "number": luckyNumber
+    })
+    // res.send('Base Route!')
 })
 
-app.get('/movies', (req, res) => {
-    res.send('Movies Route!')
+app.get('/movies/:title', (req, res) => {
+    let title = req.params.title;
+    res.send("Title: " + title)
 })
 
 app.get('/books', (req, res) => {
