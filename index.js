@@ -1,39 +1,70 @@
 const express = require ('express');
-const hbs = require('hbs')
+const hbs = require('hbs');
+const wax = require('wax-on');
+
+/* SETUP EXPRESS */
 const app = express();
 
+// VIEW ENGINE
 app.set('view engine', 'hbs');
 
-// ROUTES
-/* GET */
-app.get('/', (req, res) => {
-    let luckyNumber = Math.floor(Math.random()*100 + 1);
+// STATIC FOLDER
+app.use(express.static('public'));
+app.use(express.urlencoded({extended:false}));
 
-    res.render('index', {
-        "number": luckyNumber
-    })
-    // res.send('Base Route!')
+// SETUP WAX-ON
+wax.on(hbs.handlebars);
+wax.setLayoutPath('./views/layouts');
+
+hbs.handlebars.registerHelper('ifEquals', function(arg1, arg2, options){
+    return (arg1 == arg2) ? options.fn(this) : options.inverse(this);
+});
+
+/* ROUTES */
+// GET
+app.get('/', (req, res) => {
+    
+    res.render('index')
 })
 
-app.get('/movies/:title', (req, res) => {
-    let title = req.params.title;
-    res.send("Title: " + title)
+app.get('/suggestions', (req, res) => {
+    res.render('suggestion_form')
+})
+
+app.get('/music', (req, res) => {
+    let favorite = 'Coloratura';
+    res.render('music', {
+        'songs': ['My Universe', 'Coloratura', 'Viva la Vida'],
+        'favoriteSong': favorite
+    })
+    // let title = req.params.title;
+    // res.send("Title: " + title)
 })
 
 app.get('/books', (req, res) => {
-    res.send('Books Route!')
+    // res.send('Books Route!')
 })
 
-/* POST */
-// app.post('/', (req, res) => {``})
+// POST
+app.post('/suggestions', (req, res) => {
+    console.log(req.body);
+    // res.send('suggestion received')
+    let { name, email, title, category } = req.body;
+    res.render('display_suggestion', {
+        name,
+        email,
+        title,
+        category
+    });
+})
 
-/* PUT */
+// PUT
 // app.put('/', (req, res) => {``})
 
-/* DELETE */
+// DELETE
 // app.delete('/', (req, res) => {``})
 
-/* PATCH */
+// PATCH
 // app.patch('/', (req, res) => {``})
 
 /* SERVER */

@@ -159,7 +159,12 @@ fresh@0.5.2:
   resolved "https://registry.yarnpkg.com/fresh/-/fresh-0.5.2.tgz#3d8cadd90d976569fa835ab1f8e4b23a105605a7"
   integrity sha1-PYyt2Q2XZWn6g1qx+OSyOhBWBac=
 
-handlebars@4.7.7:
+graceful-fs@^4.1.15:
+  version "4.2.9"
+  resolved "https://registry.yarnpkg.com/graceful-fs/-/graceful-fs-4.2.9.tgz#041b05df45755e587a24942279b9d113146e1c96"
+  integrity sha512-NtNxqUcXgpW2iMrfqSfR73Glt39K+BLwWsPs94yR63v45T0Wbej7eRmL5cWfwEgqXnmjQp3zaJTshdRW/qC2ZQ==
+
+handlebars@4.7.7, handlebars@^4.1.1:
   version "4.7.7"
   resolved "https://registry.yarnpkg.com/handlebars/-/handlebars-4.7.7.tgz#9ce33416aad02dbd6c8fafa8240d5d98004945a1"
   integrity sha512-aAcXm5OAfE/8IXkcZvCepKU3VzW1/39Fb5ZuqMtgI/hT8X2YgoMvBY5dLhq/cpOvw7Lk1nK/UF71aLG/ZnVYRA==
@@ -402,6 +407,14 @@ walk@2.3.15:
   integrity sha512-4eRTBZljBfIISK1Vnt69Gvr2w/wc3U6Vtrw7qiN5iqYJPH7LElcYh/iU4XWhdCy2dZqv1ToMyYlybDylfG/5Vg==
   dependencies:
     foreachasync "^3.0.0"
+
+wax-on@^1.2.2:
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/wax-on/-/wax-on-1.2.2.tgz#92b9284709ea5fd9090ef5c98365508843320216"
+  integrity sha512-K5xm6yF6ms6/k4KsvYjI+hKQqkAoSYvR+sn76fwKmKAL6nfLc9V7aUZrh+X2CFBuDd9UCnDjr8LpSYxqNRfmuA==
+  dependencies:
+    graceful-fs "^4.1.15"
+    handlebars "^4.1.1"
 
 wordwrap@^1.0.0:
   version "1.0.0"

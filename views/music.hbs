@@ -1,0 +1,14 @@
+{{#extends 'base'}}
+    {{#block 'content'}}
+        {{#each songs}}
+        <p>{{this}}</p>
+        {{/each}}
+
+        {{#ifEquals favoriteSong 'Coloratura'}}
+            <p>Listen some more</p>
+        {{else}}
+            <p>Look for something else</p>
+        {{/ifEquals}}
+
+    {{/block}}
+{{/extends}}
