@@ -1,6 +1,7 @@
 # TGC-PROJECT2-DIGITAL LIBRARY (Catalogue)
 ## ABOUT THE PROJECT 
 ###### Project Name: Cat Library
+###### Project Technologies: Vue, Express, MongoDB
 ###### Project Summary:
        - This project will be a cataloguing digital library web application of books and music.
 ###### Project Features:
