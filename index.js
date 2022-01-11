@@ -6,32 +6,33 @@ const wax = require('wax-on');
 const axios = require('axios');
 const MongoUtil = require('./MongoUtil.js');
 const ObjectId = require('mongodb').ObjectId;
-const { application } = require('express');
+
+/* SETUP EXPRESS */
+const app = express();
+
+// VIEW ENGINE
+app.set('view engine', 'hbs');
+const helpers = require('handlebars-helpers')({
+    handlebars: hbs.handlebars
+});
+// STATIC FOLDER
+app.use(express.static('public'));
+app.use(express.urlencoded({extended:false}));
+app.use(express.json());
+app.use(cors());
+
+// SETUP WAX-ON
+wax.on(hbs.handlebars);
+wax.setLayoutPath('./views/layouts');
+
+hbs.handlebars.registerHelper('ifEquals', function(arg1, arg2, options){
+    return (arg1 == arg2) ? options.fn(this) : options.inverse(this);
+});
+
 
 async function main() {
     
-
-    /* SETUP EXPRESS */
-    const app = express();
-
-    // VIEW ENGINE
-    app.set('view engine', 'hbs');
-
-    // STATIC FOLDER
-    app.use(express.static('public'));
-    app.use(express.urlencoded({extended:false}));
-    app.use(express.json());
-    app.use(cors());
-
-    // SETUP WAX-ON
-    wax.on(hbs.handlebars);
-    wax.setLayoutPath('./views/layouts');
-
-    hbs.handlebars.registerHelper('ifEquals', function(arg1, arg2, options){
-        return (arg1 == arg2) ? options.fn(this) : options.inverse(this);
-    });
-
-    await MongoUtil.connect(process.env.ATLAS_URI, 'music_coldplay');
+    await MongoUtil.connect(process.env.ATLAS_URI, 'CatLibrary');
 
     /* ROUTES */
     // GET
@@ -40,7 +41,8 @@ async function main() {
         res.render('index')
     })
 
-    app.get('/suggestions', (req, res) => {
+    app.get('/suggestions', async (req, res) => {
+        let db = MongoUtil.getDB();
         res.render('suggestion_form')
     })
 
@@ -63,13 +65,24 @@ async function main() {
         console.log(req.body);
         // res.send('suggestion received')
         let { name, email, title, categoryOptions } = req.body;
-        res.render('display_suggestion', {
+        let db = MongoUtil.getDB();
+        if (!Array.isArray(categoryOptions)) {
+            categoryOptions = [categoryOptions];
+        }
+        db.collection('suggestion_list').insertOne({
             name,
             email,
             title,
             categoryOptions
         });
-    })
+        res.send('suggestion has been added')
+        // res.render('display_suggestion', {
+        //     name,
+        //     email,
+        //     title,
+        //     categoryOptions
+        // });
+    });
 
     // PUT
     // app.put('/', (req, res) => {``})
@@ -79,10 +92,10 @@ async function main() {
 
     // PATCH
     // app.patch('/', (req, res) => {``})
-
-    /* SERVER */
-    app.listen(3000, () => {
-        console.log ("Server ready!")
-    })
 }
 main();
+
+/* SERVER */
+app.listen(process.env.PORT, () => {
+    console.log ("Server ready!")
+})
