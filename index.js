@@ -32,13 +32,15 @@ hbs.handlebars.registerHelper('ifEquals', function(arg1, arg2, options){
 
 async function main() {
     
-    await MongoUtil.connect(process.env.ATLAS_URI, 'CatLibrary');
+    await MongoUtil.connect(process.env.MONGO_URI, 'books_library');
 
     /* ROUTES */
     // GET
-    app.get('/', (req, res) => {
-        
-        res.render('index')
+    app.get('/', async (req, res) => {
+        const db = MongoUtil.getDB();
+        let books = await db.collection('books').find().toArray();
+        res.send(books);
+        // res.render('index')
     })
 
     app.get('/suggestions', async (req, res) => {
