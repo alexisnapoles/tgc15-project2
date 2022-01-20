@@ -7,7 +7,7 @@ async function connect(uri, dbname){
         useUnifiedTopology: true
     })
     _db = client.db(dbname);
-    console.log('Database connected');
+    console.log('Hoorah! You made the database work! Good job you! Go go!');
 }
 
 function getDB() {
@@ -15,5 +15,6 @@ function getDB() {
 }
 
 module.exports = {
-    connect, getDB
+    connect, 
+    getDB
 }

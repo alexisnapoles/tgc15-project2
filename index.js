@@ -1,4 +1,4 @@
-const express = require ('express');
+const express = require('express');
 const cors = require('cors');
 require('dotenv').config()
 const hbs = require('hbs');
@@ -6,6 +6,7 @@ const wax = require('wax-on');
 const axios = require('axios');
 const MongoUtil = require('./MongoUtil.js');
 const ObjectId = require('mongodb').ObjectId;
+const async = require('hbs/lib/async');
 
 /* SETUP EXPRESS */
 const app = express();
@@ -17,7 +18,7 @@ const helpers = require('handlebars-helpers')({
 });
 // STATIC FOLDER
 app.use(express.static('public'));
-app.use(express.urlencoded({extended:false}));
+app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(cors());
 
@@ -25,66 +26,65 @@ app.use(cors());
 wax.on(hbs.handlebars);
 wax.setLayoutPath('./views/layouts');
 
-hbs.handlebars.registerHelper('ifEquals', function(arg1, arg2, options){
+hbs.handlebars.registerHelper('ifEquals', function (arg1, arg2, options) {
     return (arg1 == arg2) ? options.fn(this) : options.inverse(this);
 });
 
-
+/* ---------- START ASYNC FUNCTION ---------- */
 async function main() {
-    
+
     await MongoUtil.connect(process.env.MONGO_URI, 'books_library');
 
     /* ROUTES */
-    // GET
-    app.get('/', async (req, res) => {
-        const db = MongoUtil.getDB();
-        let books = await db.collection('books').find().toArray();
-        res.send(books);
-        // res.render('index')
-    })
 
-    app.get('/suggestions', async (req, res) => {
+    /* ------ BOOKS COLLECTION ROUTES ------ */
+    // GET_BOOKS 
+    app.get('/books', async (req, res) => {
         let db = MongoUtil.getDB();
-        res.render('suggestion_form')
-    })
+        let books_records = await db.collection('books').find().toArray();
+        // res.send(books_records)
+        res.render('results_books', {
+            books_records
+        });
+    });
 
-    app.get('/music', (req, res) => {
-        let favorite = 'Coloratura';
-        res.render('music', {
-            'songs': ['My Universe', 'Coloratura', 'Viva la Vida'],
-            'favoriteSong': favorite
-        })
-        // let title = req.params.title;
-        // res.send("Title: " + title)
-    })
+    app.get('/books/:booksid/edit', async (req, res) => {
+        let db = MongoUtil.getDB();
+        let books_records = await db.collection('books').findOne({
+            '_id': ObjectId(req.params.booksid)
+        });
 
-    app.get('/books', (req, res) => {
-        // res.send('Books Route!')
-    })
+        res.render('edit_books', {
+            books_records
+        });
+    });
+
+    // POST_BOOKS
+    app.post('/books/add', async (req, res) => {
+        // destructured format
+        let { title, author, summary, genre, imgLink, year_published, publisher, ISBN_13, ratings } = req.body;
+        // this is to present values in array when user
+        // has checked one or multiple categorie(s)
+        if (!Array.isArray(genre)) {
+            genre = [genre];
+        }
+
+        db.collection('books').insertOne({
+            title,
+            author,
+            summary,
+            genre,
+            imgLink,
+            year_published,
+            publisher,
+            ISBN_13,
+            ratings
+        });
+        res.send('yo! dude, some good books you added, aight!')
+    });
 
     // POST
-    app.post('/suggestions', (req, res) => {
-        console.log(req.body);
-        // res.send('suggestion received')
-        let { name, email, title, categoryOptions } = req.body;
-        let db = MongoUtil.getDB();
-        if (!Array.isArray(categoryOptions)) {
-            categoryOptions = [categoryOptions];
-        }
-        db.collection('suggestion_list').insertOne({
-            name,
-            email,
-            title,
-            categoryOptions
-        });
-        res.send('suggestion has been added')
-        // res.render('display_suggestion', {
-        //     name,
-        //     email,
-        //     title,
-        //     categoryOptions
-        // });
-    });
+    // app.post('/', (req, res) => {``})
 
     // PUT
     // app.put('/', (req, res) => {``})
@@ -98,6 +98,7 @@ async function main() {
 main();
 
 /* SERVER */
-app.listen(process.env.PORT, () => {
-    console.log ("Server ready!")
+app.listen(3000, () => {
+    console.log("Server has taken the first step to perpetual victory!")
 })
+// process.env.PORT

@@ -1,0 +1,31 @@
+{{#extends}}
+{{#block 'content'}}
+<form action="" method="post">
+    <div>
+        <label for="" class="form-label">Title:</label>
+        <input type="text" name="title" id="" class="form-control" value="{{books_records.title}}"/>
+    </div>
+    <div>
+        <label for="" class="form-label">Author:</label>
+        <input type="text" name="author" id="" class="form-control" value="{{books_records.author}}"/>
+    </div>
+    <div>
+        <label for="" class="form-label">Genre:</label>
+        <div class="form-check form-check-inline">
+            <div class="ml-3">
+                <input type="text" name="category" id="fiction-checkbox" class="form-check-input" value="fiction" {{#inArray books_records.category"fiction"}}{{/inArray}}>
+                <label for="fiction-checkbox" class="form-check-label">Fiction</label>
+            </div>
+            <div class="ml-3">
+                <input type="text" name="category" id="nonFiction-checkbox" class="form-check-input" value="non-fiction" {{#inArray books_records.category"non-fiction"}}{{/inArray}}>
+                <label for="nonFiction-checkbox" class="form-check-label">Non-Fiction</label>
+            </div>    
+            <div class="ml-3">
+                <input type="text" name="category" id="mystery-chechbox" class="form-check-input" value="mystery" {{#inArray books_records.category"mystery"}}{{/inArray}}>
+                <label for="mystery-chechbox" class="form-check-label">Mystery</label>
+            </div>
+        </div>
+    </div>
+</form>
+{{/block}}
+{{/extends}}
