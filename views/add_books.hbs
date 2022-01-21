@@ -1,0 +1,102 @@
+{{#extends 'base'}}
+{{#block  'content'}}
+
+<h3>Add Books</h3>
+<form action="" method="post">
+    <div class="container">
+        {{!-- --------- book title --------- --}}
+        <div>
+            <label for="title">Book Title</label>
+            <input type="text" class="form-control" name="title" id="title"  />
+        </div>
+        {{!-- --------- book author --------- --}}
+        <div>
+            <label for="author">Book Author:</label>
+            <input type="text" class="form-control" name="author" id="author"  />
+        </div>
+        {{!-- --------- book genre --------- --}}
+        <div>
+            <label for="genre">Genre:</label>
+            <div class="form-check form-check-inline ml-3">
+                <input type="checkbox" class="form-check-input" name="genre" id="checkbox_fiction" value="fiction" />
+                <label for="checkbox_fiction">Fiction</label>
+            </div>
+            <div class="form-check form-check-inline ml-3">
+                <input type="checkbox" class="form-check-input" name="genre" id="checkbox_nonFiction" value="non-fiction"/>
+                <label for="checkbox_nonFiction">Non-Fiction</label>
+            </div>
+            <div class="form-check form-check-inline ml-3">
+                <input type="checkbox" class="form-check-input" name="genre" id="checkbox_mystery" value="mystery"/>
+                <label for="checkbox_mystery">Mystery</label>
+            </div>
+            <div class="form-check form-check-inline ml-3">
+                <input type="checkbox" class="form-check-input" name="genre" id="checkbox_scienceAndTechnology" value="science and technology"/>
+                <label for="checkbox_scienceAndTechnology">Science & Technology</label>
+            </div>
+            <div class="form-check form-check-inline ml-3">
+                <input type="checkbox" class="form-check-input" name="genre" id="checkbox_business" value="business" />
+                <label for="checkbox_business">Business</label>
+            </div>
+            <div class="form-check form-check-inline ml-3">
+                <input type="checkbox" class="form-check-input" name="genre" id="checkbox_travel" value="travel" />
+                <label for="checkbox_travel">Travel</label>
+            </div>
+            <div class="form-check form-check-inline ml-3">
+                <input type="checkbox" class="form-check-input" name="genre" id="checkbox_selfHelp" value="self-help" />
+                <label for="checkbox_selfHelp">Self-Help</label>
+            </div>
+            <div class="input-group mb-3">
+                <div class="input-group-text">
+                    <input class="form-check-input mt-0" type="checkbox" name="genre" value="others">
+                </div>
+                <input type="text" class="form-control" name="genre" placeholder="Others: please type book genre">
+            </div>
+        </div>
+        {{!-- --------- book cover image --------- --}}
+        <div class="input-group mb-3">
+            <input type="file" class="form-control" id="coverImage">
+            <label class="input-group-text" for="coverImage">Upload</label>
+        </div>
+        {{!-- --------- book summary --------- --}}
+        <div>
+            <label for="summary">Summary:</label>
+            <input type="text" class="form-control" name="summary" id="summary"  />
+        </div>
+        {{!-- --------- book year published --------- --}}
+        <div>
+            <label for="yearPublished">Year of Publication:</label>
+            <input type="text" class="form-control" name="yearPublished" id="yearPublished"  />
+        </div>
+        {{!-- --------- book publisher --------- --}}
+        <div>
+            <label for="publisher">Publisher:</label>
+            <input type="text" class="form-control" name="publisher" id="publisher"  />
+        </div>
+        {{!-- --------- book ISBN-13 --------- --}}
+        <div>
+            <label for="isbn13">ISBN-13:</label>
+            <input type="text" class="form-control" name="isbn13" id="isbn13"  />
+        </div>
+        {{!-- --------- book ratings --------- --}}
+        <div>
+            <label for="ratings">Ratings:</label>
+            <input type="text" class="form-control" name="ratings" id="ratings"  />
+        </div>
+
+        <input type="submit" class="btn btn-success my-2" value="Add a Book">
+    </div>
+</form>
+
+{{/block}}
+{{/extends}}
+
+ 
+
+{{!-- 
+
+----------------------------------------------------------------- IMPORTANT NOTES: --------------------------------------------------------------------
+ 1. f it is important that all checkboxes has unified name, otherwise necessary value will not be sent over to the server 
+
+
+
+ --}}
