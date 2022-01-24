@@ -3,6 +3,10 @@
 ## Project info
 This project will be a single-page application using Vue, MongoDB, and Express as Frameworks.
 
+This project will also cover deployment of website via the following hosts:
+    - [Heroku](https://www.heroku.com/) - for backend deployment.
+    - [GitHub](https://github.com/) - for frontend deployment.
+
 ## Project setup
 ```
 yarn install
@@ -38,3 +42,18 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
     ```
     npm install -g @vue/cli
     ``` 
+
+### ACKNOWLEDGEMENTS
+
+### DISCLAIMER
+###### External Links 
+This repository may contain links to external webistes that are not provided or maintained by or in any way affiliated with the developer.
+
+Please note that the developer does not guarantee the accuracy, relevance, timeliness, or completeness of any information on these external websites.
+
+###### Fair Use Disclaimer
+This repository may use copyrighted material which has not always been specifically authorized by the copyright owner. The developer is making such material available for criticism, comment, teaching, scholarship, or research.
+
+The developer believes this constitutes a "fair use" of any such copyrighted material as provided for in Section 107 of the United States Copyright law.
+
+If you wish to use copyrighted material from the Service for your own purposes that go beyond fair use, YOU MUST OBTAIN PERMISSION FROM THE COPYRIGHT OWNER.

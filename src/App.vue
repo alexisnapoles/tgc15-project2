@@ -13,8 +13,8 @@
         </div>
 
     <div>
-        <Home v-if="page == 'home'" />
-        <Books v-if="page == 'books'" />
+        <Home v-if="page === 'home'" />
+        <Books v-if="page === 'books'" />
     </div>
 
   </div>
@@ -22,8 +22,8 @@
 
 <!-- START SCRIPT -->
 <script>
-import Home from "./components/index.vue"
-import Books from "./components/books.vue"
+import Home from "@/components/index"
+import Books from "@/components/books"
 
 export default {
   components: {
