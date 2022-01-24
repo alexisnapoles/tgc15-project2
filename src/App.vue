@@ -1,7 +1,7 @@
 <!------- START TEMPLATE -------->
 <template>
   <div>
-    
+    <h1>hello world</h1>
   </div>
 </template>
 <!------- END TEMPLATE -------->
@@ -11,7 +11,6 @@
 
 export default {
   name: 'App',
-  
 }
 </script>
 <!------- END SCRIPT -------->
