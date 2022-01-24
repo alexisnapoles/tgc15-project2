@@ -1,30 +1,53 @@
 <template>
-  <div id="app">
-    <h1>Hello world</h1>
+  <div >
+
+    <div class="container-fluid">
+            <ul class="nav nav-tabs">
+                <li class="nav-item">
+                    <button class="nav-link" aria-current="page" v-on:click="home">Home</button>
+                </li>
+                <li class="nav-item">
+                    <button class="nav-link" v-on:click="books">Books</button>
+                </li>
+            </ul>
+        </div>
+
+    <div>
+        <Home v-if="page == 'home'" />
+        <Books v-if="page == 'books'" />
+    </div>
+
   </div>
 </template>
 
 <!-- START SCRIPT -->
 <script>
-
+import Home from "./components/index.vue"
+import Books from "./components/books.vue"
 
 export default {
-  name: 'App',
   components: {
-    
-  }
-}
+    Home,
+    Books
+  },
+  data: function(){
+    return {
+      page: 'home'
+    };
+  },
+  methods: {
+    home: function () {
+      this.page = 'home';
+    },
+    books: function () {
+      this.page = 'books'
+    },
+  },
+};
 </script>
 
 
 <!-- START STYLE -->
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+
 </style>
