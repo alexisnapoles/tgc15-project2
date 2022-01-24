@@ -1,28 +1,15 @@
 {
-  "name": "tgc-project2-digital-library",
-  "version": "1.0.0",
+  "name": "vue-debug-repository",
+  "version": "0.1.0",
   "private": true,
-  "description": "- This project will be a cataloguing digital library web application of books and music. ###### Project Features:        - Admin: can add, delete, update, and has approves or denies suggestions made by users;        - Users: can browse through list of catalogue of preference and suggest books and music;        - Searching: **Books** {by author, by title, by year of publication}; **Music** {by Artist, by title, by genre};        - Optional Info: link to book/music website {store, stream}",
-  "author": "",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint": "vue-cli-service lint"
   },
-  "main": "index.js",
   "dependencies": {
-    "axios": "^0.24.0",
     "core-js": "^3.6.5",
-    "cors": "^2.8.5",
-    "dotenv": "^11.0.0",
-    "express": "^4.17.2",
-    "handlebars-helpers": "^0.9.8",
-    "hbs": "^4.2.0",
-    "mongodb": "^4.3.0",
-    "nodemon": "^2.0.15",
-    "vue": "^2.6.11",
-    "wax-on": "^1.2.2"
+    "vue": "^2.6.11"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",
@@ -51,16 +38,5 @@
     "> 1%",
     "last 2 versions",
     "not dead"
-  ],
-  "_id": "tgc-project2-digital-library@1.0.0",
-  "bugs": {
-    "url": "https://github.com/alexisnapoles/TGC-PROJECT2-DIGITAL-LIBRARY/issues"
-  },
-  "homepage": "https://github.com/alexisnapoles/TGC-PROJECT2-DIGITAL-LIBRARY#readme",
-  "license": "ISC",
-  "readme": "ERROR: No README data found!",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/alexisnapoles/TGC-PROJECT2-DIGITAL-LIBRARY.git"
-  }
+  ]
 }
