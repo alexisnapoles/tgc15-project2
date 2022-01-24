@@ -4,6 +4,7 @@
   </div>
 </template>
 
+<!-- START SCRIPT -->
 <script>
 
 
@@ -15,6 +16,8 @@ export default {
 }
 </script>
 
+
+<!-- START STYLE -->
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
