@@ -30,3 +30,11 @@
 - [ ] sample database for the project via Mongodb
 - [ ] set up a CRUD system for the website (so as to get an overview of the idea)
 - [ ] make database available online for fetching
+
+
+### [INITIAL] PROJECT SETUP
+when using gitpod, make sure to reinstall the ff packages:
+```
+npm install -h @vue/cli
+```
+
