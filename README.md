@@ -1,5 +1,8 @@
 # tgc-project2-digital-library
 
+## Project info
+This project will be a single-page application using Vue, MongoDB, and Express as Frameworks.
+
 ## Project setup
 ```
 yarn install
