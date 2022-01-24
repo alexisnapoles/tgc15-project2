@@ -1,4 +1,4 @@
-# tgc-project2-digital-library
+# tgc15-project2
 
 ## Project info
 This project will be a single-page application using Vue, MongoDB, and Express as Frameworks.

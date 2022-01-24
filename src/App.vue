@@ -1,21 +1,20 @@
-<!------- START TEMPLATE -------->
 <template>
-  <div>
-    <h1>hello world</h1>
+  <div id="app">
+    <h1>Hello world</h1>
   </div>
 </template>
-<!------- END TEMPLATE -------->
 
-<!------- START SCRIPT -------->
 <script>
+
 
 export default {
   name: 'App',
+  components: {
+    
+  }
 }
 </script>
-<!------- END SCRIPT -------->
 
-<!------- START STYLE ------->
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
@@ -26,4 +25,3 @@ export default {
   margin-top: 60px;
 }
 </style>
-<!------- END STYLE -------->
