@@ -7,8 +7,15 @@
 </template>
 
 <script>
-export default {
+const BASE_API_URI = "https://silid-aklatan-api.herokuapp.com"
 
+import axios from 'axios'
+
+export default {
+  created: async function () {
+    let response = await axios.get(BASE_API_URI + '/books');
+    console.log(response.data);
+  }
 }
 </script>
 
