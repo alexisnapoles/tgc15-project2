@@ -1,5 +1,5 @@
 <template>
-  <div >
+  <div id="app">
 
     <div class="container-fluid">
             <ul class="nav nav-tabs">
@@ -22,13 +22,14 @@
 
 <!-- START SCRIPT -->
 <script>
-import SignupForm from '@/components/SignupForm'
+// import SignupForm from '@/components/SignupForm'
 import Home from "@/components/index"
 import Books from "@/components/books"
 
 export default {
+  name: "app",
   components: {
-    SignupForm,
+    // SignupForm,
     Home,
     Books
   },
