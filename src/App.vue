@@ -22,11 +22,13 @@
 
 <!-- START SCRIPT -->
 <script>
+import SignupForm from '@/components/SignupForm'
 import Home from "@/components/index"
 import Books from "@/components/books"
 
 export default {
   components: {
+    SignupForm,
     Home,
     Books
   },
