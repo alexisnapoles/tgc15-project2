@@ -14,7 +14,8 @@
 
     <div>
         <Home v-if="page === 'home'" />
-        <Books v-if="page === 'books'" />
+        <BooksList v-if="page === 'books'" />
+        <!-- <BooksCreate v-if="page === 'create'" /> -->
     </div>
 
   </div>
@@ -24,14 +25,16 @@
 <script>
 // import SignupForm from '@/components/SignupForm'
 import Home from "@/components/index"
-import Books from "@/components/books"
+import BooksList from "@/components/BooksList"
+// import BooksCreate from '@/components/BooksCreate'
 
 export default {
   name: "app",
   components: {
     // SignupForm,
     Home,
-    Books
+    BooksList,
+    // BooksCreate
   },
   data: function(){
     return {
@@ -45,6 +48,9 @@ export default {
     books: function () {
       this.page = 'books'
     },
+    // booksCreate: function () {
+    //   this.page = 'create'
+    // }
   },
 };
 </script>

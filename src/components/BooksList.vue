@@ -4,14 +4,14 @@
       <h1>Books Section</h1>
 
       <input type="text" v-model="title" />
-      <button class="btn btn-success btn-sm" aria-current="page" v-on:click="addBooks">+</button>
+      <button class="btn btn-success btn-sm" aria-current="page" v-on:click="booksCreate">+</button>
       
         <ul>
           <li v-for="(b, index) in filteredBooks" :key="index">{{b.title}}, {{b.author}}</li>
         </ul>
     </div>
     <div>
-      <AddBooks v-if="page === 'books'"/>
+      <BooksCreate v-if="page==='create'"/>
     </div>
       
   </div>
@@ -20,16 +20,16 @@
 <script>
 const BASE_API_URI = "https://silid-aklatan-api.herokuapp.com"
 
-import axios from 'axios';
-import AddBooks from '@/components/AddBooks';
+import axios from 'axios'
+import BooksCreate from '@/components/BooksCreate'
 
 export default {
   components: {
-    AddBooks
+    BooksCreate
   },
   data: function() {
     return {
-      page: 'books',
+      page: 'booksCreate',
       books: [],
       title: '',
     }
@@ -37,7 +37,7 @@ export default {
   created: async function () {
     let response = await axios.get(BASE_API_URI + '/books');
     this.books = response.data;
-    console.log('created')
+    // console.log('created')
   },
   computed: {
     filteredBooks : function () {
@@ -48,8 +48,8 @@ export default {
     }
   },
   methods: {
-    addBooks: () => {
-      this.page = 'addBooks';
+    booksCreate: () => {
+      this.page = 'create';
     }
   },
 }
