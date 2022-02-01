@@ -7,7 +7,7 @@
 <template>
 <div>
   <h1 class="text-3xl font-bold underline">
-    Hello world!
+    Hello heloo!
   </h1>
   
 </div>
