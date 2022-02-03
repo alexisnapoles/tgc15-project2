@@ -2,18 +2,28 @@
   <div>
     <div class="container">
       <h1>Books Section</h1>
-
-      <input 
+      <input
+        class="form-control" 
         type="text" 
         v-model="title" 
       />
       <button 
         class="btn btn-success btn-sm" 
-        aria-current="page" 
-        v-on:click="goBooksCreate">
-        +
+        v-on:click="component='add'">
+        Add
       </button>
-      
+      <button 
+        class="btn btn-success btn-sm" 
+        v-on:click="component='update'">
+        Update
+      </button>
+      <button 
+        class="btn btn-success btn-sm" 
+        v-on:click="component='delete'">
+        delete
+      </button>
+      <component v-bind:is="component"></component>
+      <div>
         <ul>
           <li 
             v-for="(b, index) in filteredBooks" 
@@ -22,27 +32,28 @@
           {{b.author}}
           </li>
         </ul>
+      </div>
     </div>
-    <div>
-      <BooksCreate v-if="page==='create'"/>
-    </div>
-      
   </div>
 </template>
 
 <script>
 const BASE_API_URI = "https://silid-aklatan-api.herokuapp.com"
 
-import axios from 'axios'
 import BooksCreate from '@/components/BooksCreate'
+import BooksUpdate from '@/components/BooksUpdate'
+import BooksDelete from '@/components/BooksDelete'
+import axios from 'axios'
 
 export default {
   components: {
-    BooksCreate
+    'add': BooksCreate,
+    'update': BooksUpdate,
+    'delete': BooksDelete
   },
   data: function() {
     return {
-      page: 'Home',
+      component: 'BooksList',
       books: [],
       title: '',
     }
@@ -59,11 +70,6 @@ export default {
         return eachBook.title.toLowerCase().includes(this.title.toLowerCase())
       })
       return filtered;
-    }
-  },
-  methods: {
-    goBooksCreate: () => {
-      this.page = 'create';
     }
   },
 }
