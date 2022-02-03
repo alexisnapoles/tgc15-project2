@@ -28,8 +28,9 @@
           <li 
             v-for="(b, index) in filteredBooks" 
             :key="index">
-          {{b.title}}, <br/> 
-          {{b.author}}
+          {{b.title}} <br/> 
+          {{b.author}} <br/>
+          {{b.ratings}}
           </li>
         </ul>
       </div>
@@ -39,11 +40,11 @@
 
 <script>
 const BASE_API_URI = "https://silid-aklatan-api.herokuapp.com"
-
+import axios from 'axios'
 import BooksCreate from '@/components/BooksCreate'
 import BooksUpdate from '@/components/BooksUpdate'
 import BooksDelete from '@/components/BooksDelete'
-import axios from 'axios'
+
 
 export default {
   components: {
@@ -56,6 +57,7 @@ export default {
       component: 'BooksList',
       books: [],
       title: '',
+      ratings: ''
     }
   },
   // created before rendering
