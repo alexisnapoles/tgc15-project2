@@ -3,11 +3,24 @@
     <div class="container">
       <h1>Books Section</h1>
 
-      <input type="text" v-model="title" />
-      <button class="btn btn-success btn-sm" aria-current="page" v-on:click="booksCreate">+</button>
+      <input 
+        type="text" 
+        v-model="title" 
+      />
+      <button 
+        class="btn btn-success btn-sm" 
+        aria-current="page" 
+        v-on:click="goBooksCreate">
+        +
+      </button>
       
         <ul>
-          <li v-for="(b, index) in filteredBooks" :key="index">{{b.title}}, {{b.author}}</li>
+          <li 
+            v-for="(b, index) in filteredBooks" 
+            :key="index">
+          {{b.title}}, <br/> 
+          {{b.author}}
+          </li>
         </ul>
     </div>
     <div>
@@ -29,11 +42,12 @@ export default {
   },
   data: function() {
     return {
-      page: 'booksCreate',
+      page: 'Home',
       books: [],
       title: '',
     }
   },
+  // created before rendering
   created: async function () {
     let response = await axios.get(BASE_API_URI + '/books');
     this.books = response.data;
@@ -48,7 +62,7 @@ export default {
     }
   },
   methods: {
-    booksCreate: () => {
+    goBooksCreate: () => {
       this.page = 'create';
     }
   },
