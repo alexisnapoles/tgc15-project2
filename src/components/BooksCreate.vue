@@ -1,108 +1,156 @@
 <template>
-    <div>
-        <!-- <form 
-            @submit.prevent="checkForm"
-            method="POST"
-            autocomplete="off"> -->
-            <div>
-                <label for="title" class="form-label">Title:</label>
+    <div class="submit-form">
+        <div v-if="!submitted">
+            <div class="field">
+                <label for="title" class="label">Title:</label>
                 <input
                     id="title"
-                    v-model="form.title"
+                    v-model="title"
                     name="title"
                     type="text" 
-                    class="form-control" />
-                <!-- <p v-if="!titleIsValid" class="error-message">The title field is required</p> -->
+                    class="input is-normal" />
+               
             </div>
-            <div>
-                <label for="author" class="form-label">Author:</label>
+            <div class="field">
+                <label for="author" class="label">Author:</label>
                 <input
                     id="author"
-                    v-model="form.author"
+                    v-model="author"
                     name="author"
                     type="text" 
-                    class="form-control" />
-                <!-- <p v-if="!authorIsValid" class="error-message">The author field is required</p> -->
+                    class="input is-normal" />
+               
             </div>
-            <div>
-                <label for="summary" class="form-label">Summary:</label>
+            <div class="field">
+                <label for="summary" class="label">Summary:</label>
                 <textarea 
                     id="summary"
-                    v-model="form.summary"
+                    v-model="summary"
                     name="summary"
                     type="text" 
-                    class="form-control">
+                    class="textarea">
                 </textarea>
-                <!-- <p v-if="!summaryIsValid" class="error-message">The summary field is required</p> -->
+               
             </div>
-            <div>
-                <label for="genre" class="form-label typo__label">Genre:</label>
-                
+            <label for="genre" class="label">Genre:</label>
+            <div class="select ">
+                <select v-model="genre" name="genre" id="genre">                
+                    <option value="Fiction">Fiction</option>                
+                    <option value="Non-Fiction">Non-Fiction</option>                
+                    <option value="Mystery">Mystery</option>                
+                    <option value="Thriller">Thriller</option>                
+                    <option value="Sci-Fi">Sci-Fi</option>                
+                    <option value="Self-help">Self-help</option>                
+                    <option value="Science-and-Technology">Science and Technology</option>                
+                    <option value="Business">Business</option>                
+                    <option value="Travel">Travel</option>                
+                    <option value="Fantasy">Fantasy</option>                
+                    <option value="History">History</option>                
+                    <option value="Action-and-Adventure">Action and Adventure</option>                
+                    <option value="Literary">Literary</option>
+                </select>                
             </div>
-            <div>
-                <label for="yearPublished" class="form-label">Year Published:</label>
+            <div class="field">
+                <label for="yearPublished" class="label">Year Published:</label>
                 <input 
                     id="yearPublished"
-                    v-model.number="form.yearPublished"
+                    v-model.number="yearPublished"
                     name="yearPublished"
                     type="text" 
-                    class="form-control" />
-                    <!-- <p v-if="!yearPublishedIsValid" class="error-message">The year of publication field is required</p> -->
+                    class="input is-normal" />
             </div>
-            <div>
-                <label for="publisher" class="form-label">Publisher:</label>
+            <div class="field">
+                <label for="publisher" class="label">Publisher:</label>
                 <input 
                     id="publisher"
-                    v-model="form.publisher"
+                    v-model="publisher"
                     name="apublisher"
                     type="text" 
-                    class="form-control" />
-                    <!-- <p v-if="!publisherIsValid" class="error-message">The publisher field is required</p> -->
+                    class="input is-normal" />
             </div>
-            <div>
-                <label for="isbn13" class="form-label">ISBN-13:</label>
+            <div class="field">
+                <label for="isbn13" class="label">ISBN-13:</label>
                 <input 
                     id="isbn13"
-                    v-model.number="form.isbn13"
+                    v-model.number="isbn13"
                     name="isbn13"
                     type="text" 
-                    class="form-control" />
-                    <!-- <p v-if="!isbn13IsValid" class="error-message">The ISBN-13 field is required</p> -->
+                    class="input is-normal" />
             </div>
-            <div>
-                <label for="ratings" class="form-label">Ratings:</label>
-                <!-- <validation-provider rules="required" v-slot="{ errors }"> -->
+            <div class="field">
+                <label for="ratings" class="label">Ratings:</label>
                     <input 
                     id="ratings"
-                    v-model.number="form.ratings"
+                    v-model.number="ratings"
                     name="ratings"
                     type="text" 
-                    class="form-control" />
-                    <!-- <span>{{errors[0]}}</span>
-                </validation-provider> -->
+                    class="input is-normal" />
             </div>
-            <div>
+            <div class="field">
                 <button 
-                    v-on:click="addBook()"
+                    @click="saveBook"
                     type="submit"
                     value="submit"
-                    class="btn btn-primary mb-3 my-2">
-                Add Book
+                    class="button is-info">
+                Submit
             </button>
             </div>
-        <!-- </form> -->
-        
+        </div>
+        <div v-else>
+            <h4>Submitted successfully!</h4>
+            <button class="button is-success" @click="newBook">Add</button>
+        </div>
     </div>
 </template>
 
 <script>
 // import axios from 'axios'
+import dataServices from "../services/dataServices";
 
 export default {
     name: 'BooksCreate',
-    components: {
-
+    data: function() {
+        return {
+            books: {
+                title: '',
+                author: '',
+                summary: '',
+                genre: [],
+                yearPublished: '',
+                publisher: '',
+                isbn13: '',
+                ratings: '',
+            },
+            submitted: false
+        };
     },
+    methods: {
+        saveBook: function() {
+            let data = {
+                title: this.title,
+                author: this.author,
+                summary: this.summary,
+                genre: this.genre,
+                yearPublished: this.yearPublished,
+                publisher: this.publisher,
+                isbn13: this.isbn13,
+                ratings: this.ratings,
+            };
+            dataServices.create(data)
+                .then(res => {
+                    this.books.id = res.data.id;
+                    console.log(res.data);
+                    this.submitted = true;
+                })
+                .catch(e => {
+                    console.log(e);
+                });
+        },
+        newBook: function() {
+            this.submitted = false;
+            this.books = {};
+        }
+    }
     // data: function() {
     //     return {
     //         form: {
@@ -141,5 +189,8 @@ export default {
 </script>
 
 <style>
-
+.submit-form {
+    max-width: 300px;
+    margin: auto;
+}
 </style>

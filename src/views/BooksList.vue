@@ -1,8 +1,8 @@
 <template>
   <div>
-    <div class="container">
+    <!-- <div class="container"> -->
       <h1>Books Section</h1>
-      <input
+      <!-- <input
         class="form-control" 
         type="text" 
         v-model="title" 
@@ -22,7 +22,7 @@
         v-on:click="component='delete'">
         Delete
       </button>
-      <component v-bind:is="component"></component>
+      <component v-bind:is="component"></component> -->
       <!-- <div>
         <ul>
           <li 
@@ -34,7 +34,7 @@
           </li>
         </ul>
       </div> -->
-    </div>
+    <!-- </div> -->
   </div>
 </template>
 
