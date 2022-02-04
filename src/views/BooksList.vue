@@ -1,81 +1,133 @@
 <template>
-  <div>
+  <div id="app">
     <!-- <div class="container"> -->
       <h1>Books Section</h1>
-      <!-- <input
-        class="form-control" 
-        type="text" 
-        v-model="title" 
-      />
-      <button 
-        class="btn btn-success btn-sm" 
-        v-on:click="component='add'">
-        Add
-      </button>
-      <button 
-        class="btn btn-success btn-sm" 
-        v-on:click="component='update'">
-        Update
-      </button>
-      <button 
-        class="btn btn-success btn-sm" 
-        v-on:click="component='delete'">
-        Delete
-      </button>
-      <component v-bind:is="component"></component> -->
-      <!-- <div>
-        <ul>
-          <li 
-            v-for="(b, index) in filteredBooks" 
-            :key="index">
-              {{b.title}} <br/> 
-              {{b.author}} <br/>
-              {{b.ratings}}
-          </li>
-        </ul>
-      </div> -->
-    <!-- </div> -->
+      <div class="field has-addons">
+        <div class="control">
+          <input 
+            v-model="title"
+            class="input" 
+            type="text" 
+            placeholder="Search by title">
+        </div>
+        <div class="control">
+          <button class="button is-info" @click="searchTitle">
+            Search
+          </button>
+        </div>
+      </div>
+      <h2>Books List</h2>
+      <ul>
+        <li
+          class="card"
+          :class="{ active: index == currentIndex }"
+          v-for="(b, index) in books"
+          :key="index"
+          @click="setActiveBook(b, index)">
+          {{ b.title }}
+        </li>
+      </ul>
+      <button class="button is-danger" @click="removeAllBooks">Remove All</button>
+      <div class="column">
+        <div v-if="currentBook">
+          <h4>Book</h4>
+          <div>
+            <label for="title">Title:</label>
+            {{ currentBook.title }}
+          </div>
+          <div>
+            <label for="author">Author:</label>
+            {{ currentBook.author }}
+          </div>
+          <div>
+            <label for="ratings">Ratings:</label>
+            {{ currentBook.ratings }}
+          </div>
+          <router-link to="'/books/' + currentBook.id" class="notification is-warning">Edit</router-link>
+        </div>
+        <div v-else>
+          <br/>
+          <p>Please click on a Book...</p>
+        </div>
+      </div>
+      <router-view/>
   </div>
 </template>
 
 <script>
-// import BooksCreate from '@/components/BooksCreate'
-// import BooksUpdate from '@/components/BooksUpdate'
-// import BooksDelete from '@/components/BooksDelete'
-// const BASE_URI = "https://silid-aklatan-api.herokuapp.com"
-// import axios from 'axios'
-
+import dataServices from "../services/dataServices"
 
 export default {
+    name: 'BooksList',
   // components: {
   //   'add': BooksCreate,
   //   'update': BooksUpdate,
   //   'delete': BooksDelete
   // },
-  // data: function() {
-  //   return {
-  //     component: 'BooksList',
-  //     books: [],
-  //     title: '',
-  //     ratings: ''
-  //   }
-  // },
-  // // created before rendering
-  // created: async function () {
-  //   let response = await axios.get(BASE_URI + '/books');
-  //   this.books = response.data;
-  //   // console.log('created')
-  // },
-  // computed: {
-  //   filteredBooks : function () {
-  //     let filtered = this.books.filter((eachBook) => {
-  //       return eachBook.title
-  //               .toLowerCase()
-  //               .includes(this.title.toLowerCase())
-  //     })
-  //     return filtered;
-  //   }
-  // },
+  data: function() {
+    return {
+      books: [],
+      currentBook: null,
+      currentIndex: -1,
+      title: '',
+      author: '',
+      ratings: ''
+    };
+  },
+  methods: {
+    retrieveBooks() {
+      dataServices.getAll()
+        .then(res => {
+          this.books = res.data;
+          console.log(res.data);
+        })
+        .catch(e => {
+          console.log(e);
+        });
+    },
+    refreshList() {
+      this.retrieveBooks();
+      this.currentBook = null;
+      this.currentIndex = -1;
+    },
+    setActiveBook(b, index) {
+      this.currentBook = b;
+      this.currentIndex = b ? index : -1;
+    },
+    removeAllBooks() {
+      dataServices.deleteAll()
+        .then(res => {
+          console.log(res.data);
+          this.refreshList();
+        })
+        .catch(e => {
+          console.log(e);
+        });
+    },
+
+    searchTitle() {
+      dataServices.findByTitle(this.title)
+        .then(res => {
+          this.books = res.data;
+          this.setActiveBook(null);
+          console.log(res.data);
+        })
+        .catch(e => {
+          console.log(e);
+        })
+    },
+    searchAuthor() {
+      dataServices.findByAuthor(this.author)
+        .then(res => {
+          this.book = res.data;
+          this.setActiveBook(null);
+        })
+    }
+  },
+  mounted: function() {
+    this.retrieveBooks();
+  }
+
 }
 </script>
 

@@ -5,6 +5,9 @@
 </template>
 
 <script setup>
+export default {
+    name: 'about'
+}
 
 </script>
 

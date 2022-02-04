@@ -151,40 +151,6 @@ export default {
             this.books = {};
         }
     }
-    // data: function() {
-    //     return {
-    //         form: {
-    //             title: '',
-    //             author: '',
-    //             summary: '',
-    //             genre: '',
-    //             yearPublished: '',
-    //             publisher: '',
-    //             isbn13: '',
-    //             ratings: '',
-    //         },
-    //     }
-    // },
-    // methods: {
-    //     addBook: function() {
-    //         axios.post('https://silid-aklatan-api.herokuapp.com/books', {
-    //             headers: {
-    //                 'Content-type': 'application/x-www-form-urlencoded',
-    //             },
-    //             body: [
-    //                 this.title,
-    //                 this.author,
-    //                 this.summary,
-    //                 this.genre,
-    //                 this.yearPublished,
-    //                 this.publisher,
-    //                 this.isbn13,
-    //                 this.ratings,
-    //             ]
-    //         })
-            
-    //     }
-    // }
 };
 </script>
 

@@ -1,5 +1,6 @@
 import https from '../api';
 
+
 class dataServices {
     getAll() {
         return https.get('/books');
@@ -24,6 +25,9 @@ class dataServices {
     }
     findByGenre(genre) {
         return https.get(`/books?genre=${genre}`)
+    }
+    findByAuthor(author) {
+        return https.get(`/books?author=${author}`)
     }
 }
 export default new dataServices();

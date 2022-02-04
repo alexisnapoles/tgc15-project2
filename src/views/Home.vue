@@ -8,6 +8,7 @@
 
 <script>
 export default {
+  name: 'home'
   // computed: {
   //   username() {
   //     return this.$route.params.username
