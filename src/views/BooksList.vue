@@ -2,11 +2,11 @@
   <div id="app">
     <!-- <div class="container"> -->
       <h1>Books Section</h1>
-      <div class="field has-addons">
+      <div class="field has-addons search-edit">
         <div class="control">
           <input 
             v-model="title"
-            class="input" 
+            class="input center" 
             type="text" 
             placeholder="Search by title">
         </div>
@@ -17,9 +17,9 @@
         </div>
       </div>
       <h2>Books List</h2>
-      <ul>
+      <ul class="box">
         <li
-          class="card"
+          class="media-content"
           :class="{ active: index == currentIndex }"
           v-for="(b, index) in books"
           :key="index"
@@ -29,21 +29,20 @@
       </ul>
       <button class="button is-danger" @click="removeAllBooks">Remove All</button>
       <div class="column">
-        <div v-if="currentBook">
-          <h4>Book</h4>
-          <div>
-            <label for="title">Title:</label>
+        <div v-if="currentBook" class="media-left">
+          <div class="media-content">
+            <label for="title"><strong>Title:</strong></label>
             {{ currentBook.title }}
           </div>
           <div>
-            <label for="author">Author:</label>
+            <label for="author"><strong>Author:</strong></label>
             {{ currentBook.author }}
           </div>
           <div>
-            <label for="ratings">Ratings:</label>
+            <label for="ratings"><strong>Ratings:</strong></label>
             {{ currentBook.ratings }}
           </div>
-          <router-link to="'/books/' + currentBook.id" class="notification is-warning">Edit</router-link>
+          <router-link :to="'/update/'+ currentBook._id" class="tag is-medium is-warning">Edit</router-link>
         </div>
         <div v-else>
           <br/>
@@ -58,12 +57,7 @@
 import dataServices from "../services/dataServices"
 
 export default {
-    name: 'BooksList',
-  // components: {
-  //   'add': BooksCreate,
-  //   'update': BooksUpdate,
-  //   'delete': BooksDelete
-  // },
+  name: 'BooksList',
   data: function() {
     return {
       books: [],
@@ -131,6 +125,10 @@ export default {
 }
 </script>
 
-<style>
-
+<style scoped>
+/* .center {
+  align-items: center;
+  max-width: 750px;
+  margin: auto;
+} */
 </style>

@@ -5,7 +5,6 @@ import Home from '@/views/Home.vue'
 import About from '@/views/About.vue'
 import BooksList from '@/views/BooksList.vue'
 import BooksCreate from '@/components/BooksCreate'
-import BooksUpdate from '@/components/BooksUpdate'
 import BooksDelete from '@/components/BooksDelete'
 
 Vue.use(VueRouter);
@@ -32,9 +31,9 @@ const routes = [
         component: BooksCreate
     },
     {
-        path: '/update',
+        path: '/update/:_id',
         name: 'BooksUpdate',
-        component: BooksUpdate
+        component: () =>  import('@/components/BooksUpdate')
     },
     {
         path: '/delete',

@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <div class="nav">
+    <div id="nav">
       |
       <router-link to="/">Home</router-link> |
       <router-link to="/list">Bookshelf</router-link> | 
@@ -20,7 +20,7 @@ export default {
 
 
 <!-- START STYLE -->
-<style>
+<style scoped>
 #app {
   font-family: "Avenir", Helvitica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

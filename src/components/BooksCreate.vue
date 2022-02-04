@@ -32,23 +32,25 @@
                 </textarea>
                
             </div>
-            <label for="genre" class="label">Genre:</label>
-            <div class="select ">
-                <select v-model="genre" name="genre" id="genre">                
-                    <option value="Fiction">Fiction</option>                
-                    <option value="Non-Fiction">Non-Fiction</option>                
-                    <option value="Mystery">Mystery</option>                
-                    <option value="Thriller">Thriller</option>                
-                    <option value="Sci-Fi">Sci-Fi</option>                
-                    <option value="Self-help">Self-help</option>                
-                    <option value="Science-and-Technology">Science and Technology</option>                
-                    <option value="Business">Business</option>                
-                    <option value="Travel">Travel</option>                
-                    <option value="Fantasy">Fantasy</option>                
-                    <option value="History">History</option>                
-                    <option value="Action-and-Adventure">Action and Adventure</option>                
-                    <option value="Literary">Literary</option>
-                </select>                
+            <div class="field">
+                <label for="genre" class="label">Genre:</label>
+                <div class="select ">
+                    <select v-model="genre" name="genre" id="genre">                
+                        <option value="Fiction">Fiction</option>                
+                        <option value="Non-Fiction">Non-Fiction</option>                
+                        <option value="Mystery">Mystery</option>                
+                        <option value="Thriller">Thriller</option>                
+                        <option value="Sci-Fi">Sci-Fi</option>                
+                        <option value="Self-help">Self-help</option>                
+                        <option value="Science-and-Technology">Science and Technology</option>                
+                        <option value="Business">Business</option>                
+                        <option value="Travel">Travel</option>                
+                        <option value="Fantasy">Fantasy</option>                
+                        <option value="History">History</option>                
+                        <option value="Action-and-Adventure">Action and Adventure</option>                
+                        <option value="Literary">Literary</option>
+                    </select>                
+                </div>
             </div>
             <div class="field">
                 <label for="yearPublished" class="label">Year Published:</label>
