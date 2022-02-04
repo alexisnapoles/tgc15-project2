@@ -58,5 +58,6 @@
   "bugs": {
     "url": "https://github.com/alexisnapoles/tgc15-project2/issues"
   },
-  "homepage": "https://github.com/alexisnapoles/tgc15-project2#readme"
+  "homepage": "https://github.com/alexisnapoles/tgc15-project2#readme",
+  "packageManager": "yarn@3.1.1"
 }
