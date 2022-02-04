@@ -1,21 +1,32 @@
 <template>
   <div id="app">
 
-    <div class="container-fluid">
-            <ul class="nav nav-tabs">
-                <li class="nav-item">
-                    <button class="nav-link" aria-current="page" v-on:click="home">Home</button>
-                </li>
-                <li class="nav-item">
-                    <button class="nav-link" v-on:click="books">Books</button>
-                </li>
-            </ul>
-        </div>
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+      <div class="navbar-brand">
+        <a href="" class="navbar-item">
+          <img src="" alt="">
+        </a>
 
+        <a role="button" 
+            class="navbar-burger"
+            aria-label="menu"
+            aria-expanded="false"
+            data-target="navbarList"
+        >
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
+
+      <div id="navbarList" class="navbar-menu">
+        <div class="navbar-start"></div>
+      </div>
+    </nav>
     <div>
         <Home v-if="page === 'home'" />
         <BooksList v-if="page === 'books'" />
-        <!-- <BooksCreate v-if="page === 'create'" /> -->
+
     </div>
 
   </div>
@@ -23,18 +34,15 @@
 
 <!-- START SCRIPT -->
 <script>
-// import SignupForm from '@/components/SignupForm'
 import Home from "@/components/index"
 import BooksList from "@/components/BooksList"
-// import BooksCreate from '@/components/BooksCreate'
+
 
 export default {
   name: "app",
   components: {
-    // SignupForm,
     Home,
     BooksList,
-    // BooksCreate
   },
   data: function(){
     return {
@@ -57,6 +65,7 @@ export default {
 
 
 <!-- START STYLE -->
-<style>
+<style lang="scss">
+
 
 </style>

@@ -1,10 +1,9 @@
 <template>
     <div>
-        <form 
+        <!-- <form 
             @submit.prevent="checkForm"
             method="POST"
-            autocomplete="off">
-
+            autocomplete="off"> -->
             <div>
                 <label for="title" class="form-label">Title:</label>
                 <input
@@ -37,18 +36,8 @@
                 <!-- <p v-if="!summaryIsValid" class="error-message">The summary field is required</p> -->
             </div>
             <div>
-                <label for="genre" class="form-label">Genre:</label>
-                <select 
-                    id="genre"
-                    v-model="form.genre"
-                    name="genre">
-                    <option value="fiction">Fiction</option>
-                    <option value="non-fiction">Non-Fiction</option>
-                    <option value="mystery">Mystery</option>
-                    <option value="business">Business</option>
-                    <option value="travel">Travel</option>
-                </select>
-                <!-- <p v-if="!genreIsValid" class="error-message">The genre is required</p> -->
+                <label for="genre" class="form-label typo__label">Genre:</label>
+                
             </div>
             <div>
                 <label for="yearPublished" class="form-label">Year Published:</label>
@@ -92,33 +81,27 @@
                     <!-- <span>{{errors[0]}}</span>
                 </validation-provider> -->
             </div>
-            <button 
-            v-on:click="addBook()"
-            type="submit"
-            value="submit"
-            class="btn btn-primary mb-3 my-2">
+            <div>
+                <button 
+                    v-on:click="addBook()"
+                    type="submit"
+                    value="submit"
+                    class="btn btn-primary mb-3 my-2">
                 Add Book
             </button>
-        </form>
+            </div>
+        <!-- </form> -->
         
     </div>
 </template>
 
 <script>
 import axios from 'axios'
-// import { ValidationProvider, extend } from 'vee-validate';
-// import { required } from 'vee-validate/dist/rules'
-// import 'es6-promise/auto'
-
-// extend('required', {
-//     ...required,
-//     message: 'This field is required'
-// });
 
 export default {
     name: 'BooksCreate',
     components: {
-        // ValidationProvider
+
     },
     data: function() {
         return {
@@ -126,12 +109,12 @@ export default {
                 title: '',
                 author: '',
                 summary: '',
-                genre: [],
+                genre: '',
                 yearPublished: '',
                 publisher: '',
                 isbn13: '',
-                ratings: ''
-            }
+                ratings: '',
+            },
         }
     },
     methods: {
@@ -148,7 +131,7 @@ export default {
                     this.yearPublished,
                     this.publisher,
                     this.isbn13,
-                    this.ratings
+                    this.ratings,
                 ]
             })
             
@@ -157,6 +140,6 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style>
 
 </style>

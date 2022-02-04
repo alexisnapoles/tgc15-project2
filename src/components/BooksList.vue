@@ -20,7 +20,7 @@
       <button 
         class="btn btn-success btn-sm" 
         v-on:click="component='delete'">
-        delete
+        Delete
       </button>
       <component v-bind:is="component"></component>
       <div>
@@ -28,9 +28,9 @@
           <li 
             v-for="(b, index) in filteredBooks" 
             :key="index">
-          {{b.title}} <br/> 
-          {{b.author}} <br/>
-          {{b.ratings}}
+              {{b.title}} <br/> 
+              {{b.author}} <br/>
+              {{b.ratings}}
           </li>
         </ul>
       </div>
@@ -39,11 +39,11 @@
 </template>
 
 <script>
-const BASE_API_URI = "https://silid-aklatan-api.herokuapp.com"
-import axios from 'axios'
 import BooksCreate from '@/components/BooksCreate'
 import BooksUpdate from '@/components/BooksUpdate'
 import BooksDelete from '@/components/BooksDelete'
+const BASE_API_URI = "https://silid-aklatan-api.herokuapp.com"
+import axios from 'axios'
 
 
 export default {
@@ -69,7 +69,9 @@ export default {
   computed: {
     filteredBooks : function () {
       let filtered = this.books.filter((eachBook) => {
-        return eachBook.title.toLowerCase().includes(this.title.toLowerCase())
+        return eachBook.title
+                .toLowerCase()
+                .includes(this.title.toLowerCase())
       })
       return filtered;
     }
