@@ -1,71 +1,54 @@
 <template>
   <div id="app">
-
-    <nav class="navbar" role="navigation" aria-label="main navigation">
-      <div class="navbar-brand">
-        <a href="" class="navbar-item">
-          <img src="" alt="">
-        </a>
-
-        <a role="button" 
-            class="navbar-burger"
-            aria-label="menu"
-            aria-expanded="false"
-            data-target="navbarList"
-        >
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-        </a>
-      </div>
-
-      <div id="navbarList" class="navbar-menu">
-        <div class="navbar-start"></div>
-      </div>
-    </nav>
-    <div>
-        <Home v-if="page === 'home'" />
-        <BooksList v-if="page === 'books'" />
-
+    <div class="nav">
+      <router-link to="/">Home</router-link> |
+      <router-link to="/list">Bookshelf</router-link>
+      <router-link to="/about">About</router-link> |
     </div>
-
+        <router-view/>
   </div>
 </template>
 
 <!-- START SCRIPT -->
 <script>
-import Home from "@/components/index"
-import BooksList from "@/components/BooksList"
-
-
 export default {
   name: "app",
-  components: {
-    Home,
-    BooksList,
-  },
-  data: function(){
-    return {
-      page: 'home'
-    };
-  },
-  methods: {
-    home: function () {
-      this.page = 'home';
-    },
-    books: function () {
-      this.page = 'books'
-    },
-    // booksCreate: function () {
-    //   this.page = 'create'
-    // }
-  },
-};
+ };
 </script>
 
 
 <!-- START STYLE -->
-<style lang="scss">
+<style>
+#app {
+  font-family: "Avenir", Helvitica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+}
 
+#nav a {
+  font-weight: bold;
+  color: #2c3e50;
+  padding: 0 10px;
+}
 
+#nav a.router-link-exact-active {
+  color: goldenrod;
+}
 </style>
+
+<!-- 
+    component functional render match component path 
+    without this cannot change page
+    render active page w/o refreshing
+    small refetch needed small data
+    faster when comes page changes
+    render content page if content === 'component page'
+    converted to <a> tag
+
+    ========
+    USAGE:
+    router-link === internal links
+    a tag === external link
+-->
