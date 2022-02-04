@@ -142,7 +142,7 @@ export default {
             dataServices.delete(this.currentBook._id)
                 .this(res => {
                     console.log(res.data);
-                    this.$router.push({ name: 'BooksList' })
+                    this.$router.push({ name: 'BooksUpdate' })
                     // this.message = "Book deleted!"
                 })
                 .catch(e => {
