@@ -1,24 +1,28 @@
 {
   "name": "tgc15-project2",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
+  "description": "",
+  "author": "",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "main": "index.js",
   "dependencies": {
     "core-js": "^3.6.5",
-    "vue": "^2.6.11"
+    "vue": "^3.0.0"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",
     "@vue/cli-plugin-eslint": "~4.5.0",
     "@vue/cli-service": "~4.5.0",
+    "@vue/compiler-sfc": "^3.0.0",
     "babel-eslint": "^10.1.0",
     "eslint": "^6.7.2",
-    "eslint-plugin-vue": "^6.2.2",
-    "vue-template-compiler": "^2.6.11"
+    "eslint-plugin-vue": "^7.0.0"
   },
   "eslintConfig": {
     "root": true,
@@ -26,7 +30,7 @@
       "node": true
     },
     "extends": [
-      "plugin:vue/essential",
+      "plugin:vue/vue3-essential",
       "eslint:recommended"
     ],
     "parserOptions": {
@@ -38,5 +42,16 @@
     "> 1%",
     "last 2 versions",
     "not dead"
-  ]
+  ],
+  "_id": "tgc15-project2@1.0.0",
+  "bugs": {
+    "url": "https://github.com/alexisnapoles/tgc15-project2/issues"
+  },
+  "homepage": "https://github.com/alexisnapoles/tgc15-project2#readme",
+  "license": "ISC",
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://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@github.com/alexisnapoles/tgc15-project2.git"
+  }
 }
