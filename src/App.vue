@@ -1,18 +1,16 @@
 <template>
   <div id="app">
-    <BooksListVue/>
+    <BooksList/>
   </div>
 </template>
 
 <script>
-import BooksListVue from "./components/BooksList.vue"
-
-
+import BooksList from './components/BooksList.vue';
 export default {
   name: 'App',
   components: {
-   BooksListVue
-}
+    BooksList,
+  }
 }
 </script>
 
