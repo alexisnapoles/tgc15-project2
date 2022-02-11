@@ -1,17 +1,24 @@
 <template>
   <div id="app">
-    <BooksList/>
+    <header>
+      <nav>
+      <ul>
+        <li><router-link to="/">Home</router-link></li>
+        <li><router-link to="/list">Bookshelf</router-link></li> 
+        <li><router-link to="/about">About</router-link></li>
+        <li><router-link to="/create">Add Book</router-link></li>
+      </ul>
+    </nav>
+    </header>
+    <router-view/>
   </div>
 </template>
 
+<!-- START SCRIPT -->
 <script>
-import BooksList from './components/BooksList.vue';
 export default {
-  name: 'App',
-  components: {
-    BooksList,
-  }
-}
+  name: "app",
+ };
 </script>
 
 <style>

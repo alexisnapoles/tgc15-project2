@@ -3,6 +3,7 @@ import App from './App.vue'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 import VueRouter from 'vue-router'
+import router from "./router/routes"
 
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 import 'bootstrap/dist/css/bootstrap.css'
@@ -15,5 +16,6 @@ Vue.use(IconsPlugin)
 
 new Vue({
     el: '#app',
+    router,
     render: h => h(App)
 })
