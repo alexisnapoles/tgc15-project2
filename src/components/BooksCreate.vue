@@ -85,7 +85,7 @@
       ></b-form-input>
       <div class="mt-2">Value: {{ value }}</div>
     </div>
-      <!------------ RATINGS ------------>
+      <!------------ DATETIME-LOCAL ------------>
       <div>
       <label for="datetime">Created At:</label>
       <b-form-input

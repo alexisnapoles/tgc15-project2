@@ -40,6 +40,10 @@ const routes = [
         name: 'About',
         component: About
     },
+    {
+        path: '*',
+        redirect: '/'
+    }
 
 ]
 
