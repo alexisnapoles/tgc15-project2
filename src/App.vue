@@ -1,16 +1,28 @@
 <template>
   <div id="app">
-    <header>
-      <nav>
-      <ul>
-        <li><router-link to="/">Home</router-link></li>
-        <li><router-link to="/list">Bookshelf</router-link></li> 
-        <li><router-link to="/about">About</router-link></li>
-        <li><router-link to="/create">Add Book</router-link></li>
-      </ul>
-    </nav>
-    </header>
-    <router-view/>
+    <b-navbar toggleable="lg" type="dark" variant="info">
+      <b-navbar-brand>
+        <img
+          src="./assets/logoSA.png"
+          alt="logo"
+          class="d-inline-block align-center"
+          width="50px"
+        />
+        Silid Aklatan
+      </b-navbar-brand>
+
+      <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
+
+      <b-collapse id="nav-collapse" is-nav>
+        <b-navbar-nav>
+          <b-nav-item><b-link to="/">Home</b-link></b-nav-item>
+          <b-nav-item><b-link to="/list">Bookshelf</b-link></b-nav-item>
+          <b-nav-item><b-link to="/about">About</b-link></b-nav-item>
+          <b-nav-item><b-link to="/create">Add Book</b-link></b-nav-item>
+        </b-navbar-nav>
+      </b-collapse>
+    </b-navbar>
+    <router-view />
   </div>
 </template>
 
@@ -18,7 +30,7 @@
 <script>
 export default {
   name: "app",
- };
+};
 </script>
 
 <style>
@@ -26,8 +38,8 @@ export default {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
+  text-align: auto;
   color: #2c3e50;
-  margin-top: 60px;
+  /* margin-top: 60px; */
 }
 </style>

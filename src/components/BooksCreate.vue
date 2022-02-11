@@ -1,164 +1,113 @@
 <template>
-    <div class="submit-form">
-        <div v-if="!submitted">
-            <div class="field">
-                <label for="title" class="label">Title:</label>
-                <input
-                    id="title"
-                    v-model="title"
-                    name="title"
-                    type="text" 
-                    class="input is-normal" />
-               
-            </div>
-            <div class="field">
-                <label for="author" class="label">Author:</label>
-                <input
-                    id="author"
-                    v-model="author"
-                    name="author"
-                    type="text" 
-                    class="input is-normal" />
-               
-            </div>
-            <div class="field">
-                <label for="summary" class="label">Summary:</label>
-                <textarea 
-                    id="summary"
-                    v-model="summary"
-                    name="summary"
-                    type="text" 
-                    class="textarea">
-                </textarea>
-               
-            </div>
-            <div class="field">
-                <label for="genre" class="label">Genre:</label>
-                <div class="select ">
-                    <select v-model="genre" name="genre" id="genre">                
-                        <option value="Fiction">Fiction</option>                
-                        <option value="Non-Fiction">Non-Fiction</option>                
-                        <option value="Mystery">Mystery</option>                
-                        <option value="Thriller">Thriller</option>                
-                        <option value="Sci-Fi">Sci-Fi</option>                
-                        <option value="Self-help">Self-help</option>                
-                        <option value="Science-and-Technology">Science and Technology</option>                
-                        <option value="Business">Business</option>                
-                        <option value="Travel">Travel</option>                
-                        <option value="Fantasy">Fantasy</option>                
-                        <option value="History">History</option>                
-                        <option value="Action-and-Adventure">Action and Adventure</option>                
-                        <option value="Literary">Literary</option>
-                    </select>                
-                </div>
-            </div>
-            <div class="field">
-                <label for="yearPublished" class="label">Year Published:</label>
-                <input 
-                    id="yearPublished"
-                    v-model.number="yearPublished"
-                    name="yearPublished"
-                    type="text" 
-                    class="input is-normal" />
-            </div>
-            <div class="field">
-                <label for="publisher" class="label">Publisher:</label>
-                <input 
-                    id="publisher"
-                    v-model="publisher"
-                    name="apublisher"
-                    type="text" 
-                    class="input is-normal" />
-            </div>
-            <div class="field">
-                <label for="isbn13" class="label">ISBN-13:</label>
-                <input 
-                    id="isbn13"
-                    v-model.number="isbn13"
-                    name="isbn13"
-                    type="text" 
-                    class="input is-normal" />
-            </div>
-            <div class="field">
-                <label for="ratings" class="label">Ratings:</label>
-                    <input 
-                    id="ratings"
-                    v-model.number="ratings"
-                    name="ratings"
-                    type="text" 
-                    class="input is-normal" />
-            </div>
-            <div class="field">
-                <button 
-                    @click="saveBook"
-                    type="submit"
-                    value="submit"
-                    class="button is-info">
-                Submit
-            </button>
-            </div>
-        </div>
-        <div v-else>
-            <h4>Submitted successfully!</h4>
-            <button class="button is-success" @click="newBook">Add</button>
-        </div>
+  <div id="">
+    <h1>ADD BOOKS</h1>
+    <form action="POST">
+      <!------------ URL ------------>
+      <div class="form-group">
+        <label for="inputImageUrl">Image URL:</label>
+        <input
+          type="url"
+          class="form-control"
+          id="inputUrl"
+          v-model="url"
+        />
+      </div>
+      <!------------ TITLE ------------>
+      <div class="form-group">
+        <label for="inputTitle">Title:</label>
+        <input
+          type="text"
+          class="form-control"
+          id="inputTitle"
+          v-model="title"
+        />
+      </div>
+      <!------------ AUTHOR ------------>
+      <div class="form-group">
+        <label for="inputAuthor">Author:</label>
+        <input
+          type="text"
+          class="form-control"
+          id="inputTitle"
+          v-model="author"
+        />
+      </div>
+      <!------------ SUMMARY ------------>
+      <div class="form-group">
+        <label for="inputSummary">Summary:</label>
+        <textarea type="text" class="form-control" id="inputSummary" />
+      </div>
+      <!------------ GENRE ------------>
+      <div class="form-group">
+        <label for="inputGenre">Genre:</label>
+        
+      </div>
+      <!------------ YEAR PUBLISHED ------------>
+      <div class="form-group">
+        <label for="inputYearPublished">Year of Publication:</label>
+        <input
+          type="number"
+          class="form-control"
+          id="inputYearPublished"
+          v-model="yearPublished"
+        />
+      </div>
+      <!------------ PUBLISHER ------------>
+      <div class="form-group">
+        <label for="inputPublisher">Publisher:</label>
+        <input
+          type="text"
+          class="form-control"
+          id="inputPublisher"
+          v-model="publisher"
+        />
+      </div>
+      <!------------ ISBN13 ------------>
+      <div class="form-group">
+        <label for="inputIsbn13">ISNB-13:</label>
+        <input
+          type="number"
+          class="form-control"
+          id="inputIsbn13"
+          v-model="isbn13"
+        />
+      </div>
+      <!------------ RATINGS ------------>
+      <div>
+      <label for="ratings">Ratings:</label>
+      <b-form-input
+        id="ratings"
+        v-model="value"
+        type="range"
+        min="0"
+        max="5"
+        step="0.1"
+      ></b-form-input>
+      <div class="mt-2">Value: {{ value }}</div>
     </div>
+      <!------------ RATINGS ------------>
+      <div>
+      <label for="datetime">Created At:</label>
+      <b-form-input
+        id="datetime"
+        v-model="datetime"
+        type="datetime-local"
+      ></b-form-input>
+    </div>
+    </form>
+  </div>
 </template>
 
 <script>
-// import axios from 'axios'routes
-import router from "../router/routes.js";
-
 export default {
-    name: 'BooksCreate',
-    data: function() {
-        return {
-            books: {
-                title: '',
-                author: '',
-                summary: '',
-                genre: [],
-                yearPublished: '',
-                publisher: '',
-                isbn13: '',
-                ratings: '',
-            },
-            submitted: false
-        };
-    },
-    methods: {
-        saveBook: function() {
-            let data = {
-                title: this.title,
-                author: this.author,
-                summary: this.summary,
-                genre: this.genre,
-                yearPublished: this.yearPublished,
-                publisher: this.publisher,
-                isbn13: this.isbn13,
-                ratings: this.ratings,
-            };
-            router.create(data)
-                .then(res => {
-                    this.books.id = res.data.id;
-                    console.log(res.data);
-                    this.submitted = true;
-                })
-                .catch(e => {
-                    console.log(e);
-                });
-        },
-        newBook: function() {
-            this.submitted = false;
-            this.books = {};
-        }
+  name: 'BooksCreate',
+  data() {
+    return {
+      value: ''
     }
+  }
 };
 </script>
 
 <style>
-.submit-form {
-    max-width: 300px;
-    margin: auto;
-}
 </style>

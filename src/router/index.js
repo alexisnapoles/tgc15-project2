@@ -1,18 +1,19 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Navbar from '@/views/Navbar.vue'
+import Home from '@/views/Home.vue'
 import BooksList from '@/components/BooksList.vue'
 import BooksCreate from '@/components/BooksCreate'
 import BooksDelete from '@/components/BooksDelete'
 import BooksUpdate from '@/components/BooksUpdate'
+import About from '@/views/About'
 
 Vue.use(VueRouter);
 
 const routes = [
     {
         path: '/',
-        name: 'Navbar',
-        component: Navbar
+        name: 'Home',
+        component: Home
     },
     {
         path: '/list',
@@ -25,7 +26,7 @@ const routes = [
         component: BooksCreate
     },
     {
-        path: '/update/:id',
+        path: '/update',
         name: 'BooksUpdate',
         component: BooksUpdate
     },
@@ -33,6 +34,11 @@ const routes = [
         path: '/delete',
         name: 'BooksDelete',
         component: BooksDelete
+    },
+    {
+        path: '/about',
+        name: 'About',
+        component: About
     },
 
 ]

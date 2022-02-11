@@ -1,6 +1,6 @@
 <template>
   <div>
-      <h1>UPDATE BOOKS</h1>
+      <h1>ABOUT PAGE</h1>
   </div>
 </template>
 
